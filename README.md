@@ -9,7 +9,6 @@ Il s'agit d'un fork du project de Maria Climent-Pommeret
 
 | Mainteneur.euse(s)     | Tâche(s)   | Contact               |
 |------------------------|------------|-----------------------|
-| Freyja Wildes          | dev, repo  |                       |
 | Chelsea Murgia         | all        | mail@chelsea486mhz.fr |
 
 Comment cela fonctionne
