@@ -1,3 +1,4 @@
+django==2.2
 django-tex
 jinja2-django-tags
 pytest
