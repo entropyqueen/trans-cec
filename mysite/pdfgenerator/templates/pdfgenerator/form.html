@@ -1,0 +1,65 @@
+{% extends 'pdfgenerator/base.html' %}
+
+{% block content %}
+<div class="container form-container">
+    <h1>
+        {{ title }}
+        <small>
+        {% if category == 'procuration' %}
+            Génération de la procuration
+        {% else %}
+            Génération de la lettre
+        {% endif %}
+        </small>
+    </h1>
+
+
+    <form class="memory form-horizontal" method="post">
+        <input type='hidden' name='csrfmiddlewaretoken' value="{{ csrf_token }}" />
+        {% if form.errors and not form.non_field_errors() %}
+            <p class="message bg-danger">
+                Le formulaire contient des erreurs. Merci de les corriger.
+            </p>
+        {% endif %}
+        {% if form.non_field_errors() %}
+            <p class="message bg-danger">
+                {% for error in form.non_field_errors() %}{{ error }}{% endfor %}
+            </p>
+        {% endif %}
+        {% for fieldset, fields in form.get_fieldsets() %}
+            <fieldset>
+                <legend>{{ fieldset.legend }}</legend>
+
+                {% for field in fields %}
+                    <div class="form-group{% if field.errors %} has-error{% endif %}">
+                        <label class="col-sm-4 control-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        <div class="col-sm-8">
+                            {{ field }}
+                            {% if field.help_text %}
+                                <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                            {% endif %}
+                            {% if field.errors %}
+                            <p class="message bg-danger">
+                                {% for error in field.errors %}{{ error }}{% endfor %}
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </fieldset>
+        {% endfor %}
+        <div class="form-actions">
+	        <div class="memoryControls">
+                <button type="button" class="btn btn-secondary" name="save" title="{{ strings.toggleSaveFull }}">
+                    <span class="toggleable enable"><i class="icon pawprint"></i>{{ strings.enableMemory}}</span>
+                    <span class="toggleable disable"><i class="icon pawprint"></i>{{ strings.disableMemory }}</span>
+                </button>
+                <button type="button" class="btn btn-secondary" name="forget" title="{{ strings.clearDataFull }}">
+                    <i class="icon wave"></i>{{ strings.clearData }}
+                </button>
+	        </div>
+            <button type="submit" class="btn btn-primary">Générer</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

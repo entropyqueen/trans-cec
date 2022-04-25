@@ -1,0 +1,6 @@
+django-tex
+jinja2-django-tags
+pytest
+pytest-django
+pytest-mock
+factory_boy

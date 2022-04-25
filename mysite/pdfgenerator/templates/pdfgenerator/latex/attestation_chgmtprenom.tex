@@ -1,0 +1,142 @@
+\documentclass[12pt,origdate]{lettre}%
+\usepackage[utf8x]{inputenc}
+\usepackage[french]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage{mltex}
+
+%-------------------------------------------------------------------------
+%   Partie sur le. procurant.e
+%-------------------------------------------------------------------------
+
+
+% Mettre ici le prenom de la personne faisant la procuration
+% et entre les {} le nom de famille
+\newcommand{\ProcurantId}{ {{- cleaned_data["procurantfirstname"] -}} {} \textsc{ {{- cleaned_data["procurantlastname"] -}} }}
+
+% Mettre ici la suite des pr\'{e}noms de la personne faisant la procuration
+% et entre les {} le nom de famille
+\newcommand{\ProcurantFullId}{ {{- cleaned_data["procurantlistofname"] -}} {} \textsc{ {{- cleaned_data["procurantlastname"] -}} } }
+
+
+% Mettre ici le num\'{e}ro, le type de voie et le nom de la voie
+% de la personne faisant la procuration
+\newcommand{\ProcurantAddresseRue}{ {{- cleaned_data["procurantaddress1"] -}} }
+
+% Mettre ici le code postal (les 2 premiers chiffres avant le ~)
+% et entre {} le nom de la ville
+\newcommand{\ProcurantAddresseVille}{ {{- cleaned_data["procurantaddress2"] -}} }
+
+% Ne pas toucher
+\newcommand{\ProcurantAddressFull}{\ProcurantId\\\ProcurantAddresseRue\\\ProcurantAddresseVille}
+
+
+% Mettre ici la date de naissance de la personne faisant la procuration
+\newcommand{\ProcurantDOB}{ {{- cleaned_data["procurantdob"] -}} }
+
+% Mettre ici la ville de naissance et entre () le d\'{e}partement de
+% naissance de la personne faisant la procuration
+\newcommand{\ProcurantPOB}{ {{- cleaned_data["procurantpob"] -}} }
+
+% Malheureusement, pour des raisons d'idenfication, il faut mettre
+% le deadname de la personne faisant la procuration et son nom de
+% famille
+\newcommand{\ProcurantOldId}{ {{- cleaned_data["procurantdeadname"] -}} {} \textsc{ {{- cleaned_data["procurantlastname"] -}} }}
+
+% Mettre ici le num\'{e}ro de s\'{e}curit\'{e} sociale de la personne faisant
+% la procuration
+%\newcommand{\ProcurantSecu}{ {{- cleaned_data["procurantss"] -}} }
+
+
+% Mettre ici le type d'accord souhait\'{e} pour la personne faisant
+% la procuration.
+% 0 = femme trans
+% 1 = homme trans
+\newcommand{\ProcurantGender}{ {{- cleaned_data["procurantgender"] -}} } % 0 = femme, 1 = homme
+
+
+\newcommand{\Date}{ {{- cleaned_data["date"] -}} }
+
+\newcommand{\ProcurantVille}{ {{- cleaned_data["procurantville"] -}} }
+\newcommand{\PersonIgnoreDeadname}{ {{- cleaned_data["personignoredeadname"] -}} }
+% Mettre ici le nom de l'\'{e}cole/universit\'{e}/autre \`{a} laquelle la demande
+% de rectification et d'information est demand\'{e}e
+%\newcommand{\ProcurantEcole}{ {{- cleaned_data["procurantecole"] -}} }
+
+%-------------------------------------------------------------------------
+%   Partie sur le. procur\'{e}.e
+%-------------------------------------------------------------------------
+
+% Mettre ici le pr\'{e}nom et le nom de famille entre {} de la personne
+% faisant la d\'{e}marche
+\newcommand{\PersonId}{ {{- cleaned_data["personfirstname"] -}} {} \textsc{ {{- cleaned_data["personlastname"] -}} }}
+
+% Mettre ici tous les pr\'{e}noms de la personne faisant la d\'{e}marche et
+% le nom de famille entre {}
+\newcommand{\PersonFullId}{ {{- cleaned_data["personlistofname"] -}} {} \textsc{ {{- cleaned_data["personlastname"] -}} }}
+
+% Mettre ici le num\'{e}ro de t\'{e}l\'{e}phone
+\newcommand{\PersonTel}{ {{- cleaned_data["persontelephone"] -}} }
+
+% Mettre ici : num\'{e}ro de la voie, type de voie, nom de la voie
+\newcommand{\PersonAddresseRue}{ {{- cleaned_data["personaddress1"] -}} }
+
+% Mettre ici le code postal et la ville
+\newcommand{\PersonAddresseVille}{ {{- cleaned_data["personaddress2"] -}} }
+
+% Ne pas toucher
+\newcommand{\PersonAddressFull}{\PersonId\\\PersonAddresseRue\\\PersonAddresseVille}
+
+% Mettre ici le nom de la ville d'où est \'{e}crit le courrier
+\newcommand{\PersonLocation}{\textsc{ {{- cleaned_data["personlocation"] -}} }}
+
+% Mettre ici le mail de la personne faisant les d\'{e}marches
+\newcommand{\PersonEmail}{ {{- cleaned_data["personemail"] -}} }
+
+% Mettre ici la date de naissance de la personne faisant les d\'{e}marches
+\newcommand{\PersonDOB}{ {{- cleaned_data["persondob"] -}} }
+
+% Mettre ici la ville et d\'{e}partement de naissance de la personne faisant
+% les d\'{e}marches
+\newcommand{\PersonPOB}{ {{- cleaned_data["personpob"] -}} }
+
+% Pour les accords
+% 0 = feminin
+% 1 = masculun
+\newcommand{\PersonGender}{ {{- cleaned_data["persongender"] -}} } % 0 = femme, 1 = homme
+
+
+\begin{document}
+%-----------------------------------------------%
+% Le blabla pas int\'{e}ressant                     %
+%-----------------------------------------------%
+\begin{letter}{\`{A} l'attention du service d'\'{E}tat-Civil de \ProcurantVille}
+
+    \date{le \Date}
+    \name{\PersonId}
+    \address{\centering\PersonAddressFull}
+    \telephone{\PersonTel}
+    \nofax
+    \lieu{\ProcurantVille}
+    \signature{\PersonId}
+    \email{\PersonEmail}
+
+\conc{Attestation de changement de pr\'{e}nom pour une personne transgenre}
+    \opening{Madame, Monsieur,}
+%-----------------------------------------------%
+% Le corps de la lettre de motivation           %
+% \`{a} vous de jouer !                             %
+%-----------------------------------------------%
+%-% \`{a} remplacer par votre lettre de motivation
+    Je\if\PersonGender0 sous-sign\'{e}e \else sous-sign\'{e} \fi\PersonFullId{},\if\PersonGender0 n\'{e}e \else n\'{e} \fi le \PersonDOB{} \`{a} \PersonPOB, demeurant au \PersonAddresseRue{} \PersonAddresseVille{} d\'{e}clare sur l'honneur \if\PersonIgnoreDeadname0
+    ignorer le pr\'{e}nom d'\'{E}tat-Civil de \ProcurantFullId{},
+    \if\ProcurantGender0 n\'{e}e \else n\'{e} \fi le \ProcurantDOB{} \`{a} \ProcurantPOB{} et demeurant \`{a} \ProcurantAddresseRue{} \ProcurantAddresseVille{} et ne l'appeler que \ProcurantId
+    \else n'appeler \ProcurantOldId
+    \if\ProcurantGender0 n\'{e}e \else n\'{e} \fi le \ProcurantDOB{} \`{a} \ProcurantPOB{} et demeurant \`{a} \ProcurantAddresseRue{} \ProcurantAddresseVille{} que par son v\'{e}ritable pr\'{e}nom : \ProcurantFullId\fi.
+%-----------------------------------------------%
+% Le blabla pas int\'{e}ressant                     %
+%-----------------------------------------------%
+    \closing{Fait pour faire valoir ce que de droit,}
+%-% \cc{Listes des autres destinataires}
+    \encl{Copie d'une pi\`{e}ce d'identit\'{e} de \PersonId}
+\end{letter}
+\end{document}

@@ -1,0 +1,60 @@
+<!doctype HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Trans Administratif</title>
+        <!-- Safari -->
+        <link rel="mask-icon" size="192x192" href="{{ static('trans_pride_flag192x192.png') }}"/>
+        <!-- iOS >= 5 -->
+        <link rel="apple-touch-icoe" href="{{ static('trans_pride_flag128x128.png') }}"/>
+        <link rel="shortcut icon" size="48x48" href="{{ static('trans_pride_flag48x48.png') }}"/>
+        <link rel="shortcut icon" size="192x192" href="{{ static('trans_pride_flag192x192.png') }}"/>
+        <!-- Latest compiled and minified CSS -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+        <link rel="stylesheet" href="{{ static('css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="{{ static('css/custom.css') }}"/>
+        <script src="{{ static('js/memory.js') }}"></script>
+    </head>
+    <body class="center">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ url('landing_page') }}">Trans Administratif</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        {% for category, list in lists %}
+                        <li><a href="{{ url('list', kwargs={'category': category}) }}">{{ list.title }}</a></li>
+                        {% endfor %}
+                        <li><a href="{{ url('form', kwargs={
+                                'category': 'attestation', 'id':
+                                'chgmtprenom'}) }}">Changement de prénom</a></li>
+                    </ul>
+                    <ul id="memory" class="nav navbar-nav">
+                        <li><span title="{{ strings.enableMemory }}" class="icon" id="save">&#128062;&#xfe0e;</span></li>
+                        <li><span title="{{ strings.clearData }}" class="icon" id="forget">&#127754;&#xfe0e;</span></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container">
+
+            {% block content %}{% endblock %}
+
+        </main>
+
+        <footer class="text-center">
+            <p>En cas d'erreur contacter:
+                <a href="mailto: freyja_wildes+trans-cec@pm.me">Freyja Wildes</a>.
+            </p>
+
+            <p>Adresse du repos <a href="http://gitlab.s1.0x39b.fr/freyja/trans-cec.git">ici</a>.</p>
+        </footer>
+    </body>
+</html>

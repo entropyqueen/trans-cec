@@ -1,0 +1,144 @@
+\documentclass[12pt,origdate]{lettre}%
+\usepackage[utf8x]{inputenc}
+\usepackage[french]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage{mltex}
+
+
+
+\newcommand{\ChangementPrenom}{ {{- cleaned_data["changementprenom"] -}} } % 0 = oui 1 = non
+\newcommand{\ChangementCivilite}{ {{- cleaned_data["changementcivilite"] -}} } % 0 = oui 1 = non
+%-------------------------------------------------------------------------
+%   Partie sur le. procurant.e
+%-------------------------------------------------------------------------
+
+
+% Mettre ici le prenom de la personne faisant la procuration
+% et entre les {} le nom de famille
+\newcommand{\ProcurantId}{ {{- cleaned_data["firstname"] -}} {} \textsc{ {{- cleaned_data["lastname"] -}} }}
+
+% Mettre ici la suite des pr\'{e}noms de la personne faisant la procuration
+% et entre les {} le nom de famille
+\newcommand{\ProcurantFullId}{ {{- cleaned_data["listofname"] -}} {} \textsc{ {{- cleaned_data["lastname"] -}} } }
+
+% Mettre ici le num\'{e}ro de t\'{e}l\'{e}phone de la personnne faisant la
+% procuration
+\newcommand{\ProcurantTel}{ {{- cleaned_data["telephone"] -}} }
+
+% Mettre ici le num\'{e}ro, le type de voie et le nom de la voie
+% de la personne faisant la procuration
+\newcommand{\ProcurantAddresseRue}{ {{- cleaned_data["address1"] -}} }
+
+% Mettre ici le code postal (les 2 premiers chiffres avant le ~)
+% et entre {} le nom de la ville
+\newcommand{\ProcurantAddresseVille}{ {{- cleaned_data["address2"] -}} }
+
+% Ne pas toucher
+\newcommand{\ProcurantAddressFull}{\ProcurantId\\\ProcurantAddresseRue\\\ProcurantAddresseVille}
+
+% Mettre entre {} le nom de la ville où est r\'{e}dig\'{e}e la procuration
+\newcommand{\ProcurantLocation}{\textsc{ {{- cleaned_data["location"] -}} }}
+
+% Mettre ici l'adresse mail de la personne faisant la procuration
+\newcommand{\ProcurantEmail}{ {{- cleaned_data["email"] -}} }
+
+% Mettre ici le nom du d\'{e}partement où habites la personne
+% cela est utilis\'{e} pour la caisse de CPAM dont elle d\'{e}pend
+%\newcommand{\ProcurantDepartement}{ {{- cleaned_data["departement"] -}} }
+
+% Mettre ici la date de naissance de la personne faisant la procuration
+\newcommand{\ProcurantDOB}{ {{- cleaned_data["dob"] -}} }
+
+% Mettre ici la ville de naissance et entre () le d\'{e}partement de
+% naissance de la personne faisant la procuration
+\newcommand{\ProcurantPOB}{ {{- cleaned_data["pob"] -}} }
+
+% Malheureusement, pour des raisons d'idenfication, il faut mettre
+% le deadname de la personne faisant la procuration et son nom de
+% famille
+\newcommand{\ProcurantOldId}{ {{- cleaned_data["deadname"] -}} {} \textsc{ {{- cleaned_data["lastname"] -}} }}
+
+
+% Mettre ici le type d'accord souhait\'{e} pour la personne faisant
+% la procuration.
+% 0 = femme trans
+% 1 = homme trans
+\newcommand{\ProcurantGender}{ {{- cleaned_data["gender"] -}} } % 0 = femme, 1 = homme
+
+% Mettre ici le nom de l'\'{e}cole/universit\'{e}/autre \`{a} laquelle la demande
+% de rectification et d'information est demand\'{e}e
+%\newcommand{\ProcurantEcole}{ {{- cleaned_data["ecole"] -}} }
+
+
+% Date de fin de la procuration
+\newcommand{\Date}{ {{- cleaned_data["date"] -}} }
+
+
+% Ne pas toucher
+\newcommand{\Civilite}{
+    En effet, comme l'a rappel\'{e} de nombreuses fois le D\'{e}fenseur des Droits dans des rapports, synth\`{e}ses, recommandations et d\'{e}cisions, la civilit\'{e} est une affaire d'usage et n'est aucunement li\'{e}e \`{a} la mention de sexe \`{a} l'\'{E}tat-Civil. Je vous engage \`{a} vous renseigner plus avant sur le site du D\'{e}fenseur des Droits si le moindre doute persiste.
+
+    \medskip
+
+    De surcro\^{\i}t, il a not\'{e} qu'une persistence d'une civilit\'{e} erronn\'{e}e, c'est-\`{a}-dire non conforme \`{a} l'identit\'{e} de genre r\'{e}elle d'une personne transgenre, relevait du harc\`{e}lement discriminatoire bas\'{e} sur l'identit\'{e} de genre.
+
+    \medskip
+
+    Pour toutes ces raisons, je vous demande de mettre \`{a} jour, dans les plus brefs d\'{e}lais, \if\ChangementPrenom0 mon pr\'{e}nom et \fi ma civilit\'{e} dans vos registres, et de me tenir \if\ProcurantGender0 inform\'{e}e \else inform\'{e} \fi par retour de courrier \'{e}lectronique de la bonne prise en compte de ces informations.
+}
+
+\begin{document}
+%-----------------------------------------------%
+% Le blabla pas int\'{e}ressant                     %
+%-----------------------------------------------%
+\begin{letter}{\`{A} l'attention du service client de Free}
+
+    \date{le \Date}
+    \name{\ProcurantId}
+    \address{\centering\ProcurantAddressFull}
+    \telephone{\ProcurantTel}
+    \nofax
+    \lieu{\ProcurantLocation}
+    \signature{\ProcurantId}
+    \email{\ProcurantEmail}
+
+\conc{Demande de changement \if\ChangementPrenom0 de pr\'{e}nom et \fi de civilit\'{e} d'une personne transgenre}
+    \opening{Madame, Monsieur,}
+%-----------------------------------------------%
+% Le corps de la lettre de motivation           %
+% à vous de jouer !                             %
+%-----------------------------------------------%
+%-% \`{À} remplacer par votre lettre de motivation
+    Je suis \ProcurantFullId et j'ai r\'{e}cemment obtenu mon changement de pr\'{e}nom à l'\'{E}tat-Civil et je souhaite effectuer les d\'{e}marches de changement de pr\'{e}nom et de civilit\'{e} dans les registres du service client de Free.
+
+    \if\ChangementPrenom0
+    \medskip
+
+    Je suis \if\ProcurantGender0 connue \else connu \fi de vos services sous le nom de \ProcurantOldId.
+
+    \medskip
+
+    En vertu de la d\'{e}cision de changement de pr\'{e}nom d\'{e}livr\'{e}e par l'\'{E}tat-Civil, je vous prie de bien vouloir changer mon pr\'{e}nom dans vos registres.
+
+    \medskip
+
+    Je vous rappelle, \`{a} titre informatif, que vous ne faites pas partie des autorit\'{e}s pouvant demander un acte de naissance. Les pi\`{e}ces transmises doivent vous suffire.
+
+    \medskip
+
+    De plus, je \else \medskip Je \fi vous demande de bien vouloir changer ma civilit\'{e} de \if\ProcurantGender0 \og Monsieur \fg{} à \og Madame \fg{} \else \og Madame \fg{} à \og Monsieur \fg{} \fi dans vos registres, et ce pr\'{e}alablement à toute d\'{e}cision de changement de mention de sexe à l'\'{E}tat-Civil, puisque je suis une personne transgenre.
+
+    \medskip
+
+    \Civilite
+
+
+%-----------------------------------------------%
+% Le blabla pas int\'{e}ressant                     %
+%-----------------------------------------------%
+    \closing{Je vous prie de bien vouloir croire, Madame, Monsieur, en l'assurance de ma consid\'{e}ration,}
+%-% \cc{Listes des autres destinataires}
+    \encl{Copie des pi\`{e}ces d'identit\'{e} de \ProcurantId \if\ChangementPrenom0 {} et d\'{e}cision de changement de pr\'{e}nom de \ProcurantId\fi}
+
+\end{letter}
+\end{document}

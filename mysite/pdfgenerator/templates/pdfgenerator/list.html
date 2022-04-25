@@ -1,0 +1,17 @@
+{% extends 'pdfgenerator/base.html' %}
+
+{% block content %}
+<h1>{{ list.title }}</h1>
+{% for row in range(0, ((list.forms | length) - 1) // 3 + 1) %}
+<div class="row row-margin-custom">
+    {% for form in list.forms[3*row:3*(row + 1)] %}
+    <div class="col-sm-4">
+        <article>
+            <header><a href="{{ url('form', kwargs={'category':list.category, 'id': form.id}) }}">{{ form.title }}</a></header>
+            <p>{{ form.description }}</p>
+        </article>
+    </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

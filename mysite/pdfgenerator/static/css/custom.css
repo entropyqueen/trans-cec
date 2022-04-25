@@ -1,0 +1,103 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 2em 0;
+}
+
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+    color: #cecece;
+}
+
+.navbar-collapse {
+    padding-right: 0;
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.navbar-nav > li > span.icon {
+    color: #cecece;
+    padding: 5px;
+    font-size: 2em;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.navbar-nav > li > span.icon.active, .navbar-nav > li > span.icon:active {
+    color: #333;
+    background: #cecece;
+}
+
+.navbar-nav > li > span.icon:hover {
+    color: #fff;
+}
+
+#memory {
+    float: right;
+}
+
+.memoryControls {
+    margin: 0.5em 0;
+}
+
+.memoryControls .toggleable {
+    display: none;
+}
+
+.memoryControls .toggleable.on {
+    display: inline;
+}
+
+.row-margin-custom {
+    margin-top: 2.0em;
+}
+
+/* Add a gray background color and some padding to the footer */
+.form-container {
+    max-width: 600px;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.message {
+    padding: 1em;
+    margin: 0.5em 0;
+}
+
+.icon.pawprint:before {
+    /* 1F43E */
+    content: "🐾︎";
+    margin: 0px 5px;
+}
+
+.icon.wave:before {
+    /* 1F30A */
+    content: "🌊︎";
+    margin: 0px 5px;
+}
+
+
+select.date-widget {
+    width: 33.33%;
+    display: inline-block;
+}
+
+fieldset {
+    margin: 2em 0;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}

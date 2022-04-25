@@ -1,0 +1,43 @@
+{% extends 'pdfgenerator/base.html' %}
+{% block content %}
+<h1>Mais qu'est ce donc ?</h1>
+<p>
+    Ce site permet de générer des fichiers PDF du dépôt git 
+    <a href="https://gitlab.s1.0x39b.fr/freyja/trans-cec/tree/main/mysite/pdfgenerator/templates/pdfgenerator/latex">localisé ici</a>
+</p>
+<p>Des exemples de fichiers générés sont disponibles <a href="https://gitlab.climent-pommeret.red/Chopopope/site-transadministratif/wikis/Exemple-de-fichiers-g%C3%A9n%C3%A9r%C3%A9s">ici</a>.</p>
+
+<h1>Que fait-on de vos données ?</h1>
+<p>Vos données ne sont pas stockées sur le serveur. Elles ne servent qu'à remplir les patrons de lettre.</p>
+<p>
+    Le stockage des données en local ne concerne que votre navigateur, et les données ne font l'objet
+    d'aucun traitement supplémentaire.
+</p>
+
+<h1>Les erreurs</h1>
+<p>Si vous cliquez sur "générer" et que vous retombez sur le formulaire : vous avez mal rempli le formulaire, il y a une erreur quelque part !</p>
+<p>Si vous obtenez une erreur 500 après avoir cliqué sur "générer" : vous avez probablement mis un caractère interdit par LaTeX (_, \, % par exemple)</p>
+
+<h1>Une check list ? </h1>
+Si changement de prénom à l'État-Civil :
+<ul>
+    <li> carte de transport </li>
+    <li> CNI/passeport </li>
+    <li> permis de conduire </li>
+    <li> impôts </li>
+    <li> médecins </li>
+    <li> mutuelle </li>
+    <li> carte de groupe sanguin/donneur.se d'organes </li>
+    <li> MDPH </li>
+    <li> électricité/gaz/eau </li>
+    <li> opérateur téléphonique/Internet </li>
+    <li> carte d'électeur.rice </li>
+</ul>
+Si changement de mention de sexe à l'État-Civil :
+<ul>
+    <li> CNI/passeport </li>
+    <li> permis de conduire </li>
+    <li> numéro INSEE </li>
+    <li> numéro de sécurité sociale </li>
+</ul>
+{% endblock %}
