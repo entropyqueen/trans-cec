@@ -49,7 +49,7 @@ Si changement de mention de sexe à l'État-Civil (pas encore pris en charge) :
 Requirements
 ------------
 
-- Python>=3.9 (Latest tested with)
+- Python>=3.10 (Latest tested with)
 - django-tex
 - jinja2-django-tags
 - texlive-full (pour la génération du PDF à partir de .tex)
@@ -62,9 +62,9 @@ TODO
 Contribuer ?
 ------------
 
-OUI SVP ! Pour cela, hésitez pas à faire des issues github ou bien ouvrir directement des PR sur github 
+OUI SVP ! Pour cela, n'hésitez pas à faire des issues github ou bien ouvrir directement des PR sur github 
 
-Pour cela les dépendances système requises sont:
+Pour cela les dépendances système requises sont :
 
 - git
 - python3.7
@@ -73,15 +73,15 @@ Pour cela les dépendances système requises sont:
 
 Il vous reste à configurer et faire fonctionner votre copie locale.
 
-La première étape est de créer un environnement virtuel python afin d'installer les dépendances du projet:
+La première étape est de créer un environnement virtuel python afin d'installer les dépendances du projet :
 
     $ python3 -m venv virtualenv
 
-Ensuite, installez les dépendances python requises pour faire fonctionne le projet:
+Ensuite, installez les dépendances python requises pour faire fonctionne le projet :
 
     $ virtualenv/bin/pip install -r requirements.txt
 
-Créez votre fichier de configuration:
+Créez votre fichier de configuration :
 
     $ cp mysite/mysite/localsettings.py.dist mysite/mysite/localsettings.py
 
@@ -92,7 +92,7 @@ Appliquez les migrations
 
     $ virtualenv/bin/python mysite/manage.py migrate
 
-Lancez le serveur de développement:
+Lancez le serveur de développement :
 
     $ virtualenv/bin/python mysite/manage.py runserver
 
@@ -101,10 +101,11 @@ Le projet est démarré et accessible à l'adresse http://127.0.0.1:8000/ :)
 Lancer les tests
 ----------------
 
-Des tests unitaires sont disponibles pour ce projet. Si vous modifier du code, vous pouvez
-les lancer pour vérifier que vous n'avez rien cassé:
+Des tests unitaires sont disponibles pour ce projet. Si vous modifiez du code, vous pouvez
+les lancer pour vérifier que vous n'avez rien cassé :
 
-    $ pytest mysite/tests
+    $ cd mysite
+    $ pytest tests
 
 Ont contribué
 -------------
