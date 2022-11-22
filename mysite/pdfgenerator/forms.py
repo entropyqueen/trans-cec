@@ -127,7 +127,7 @@ class ChgmtPrenomForm(FieldsetForm):
     personpob = CharFieldTex(label="Lieu et département de naissance de la personne qui fait l'attestation", widget=forms.TextInput(attrs={'placeholder': 'Nantes (Loire-Atlantique)'}))
     persontelephone = forms.RegexField(
         label="Numéro de téléphone",
-        regex=r'^\+33\d{9}$',
+        regex=r'^(\+33|0) ?\d{1} ?\d{2} ?\d{2} ?\d{2} ?\d{2} ?$',
         widget=forms.TextInput(attrs={'placeholder': '+33612345678'})
     )
     personlocation = CharFieldTex(label="Lieu où est faite la lettre")
@@ -211,7 +211,7 @@ class ProcurationForm(FieldsetForm):
     procurantlistofname = CharFieldTex(label="Liste des prénoms", widget=forms.TextInput(attrs={'placeholder': 'Corentin, Sebastien, Pierre'}))
     procuranttelephone = forms.RegexField(
         label="Numéro de téléphone",
-        regex=r'^\+33\d{9}$',
+        regex=r'^(\+33|0) ?\d{1} ?\d{2} ?\d{2} ?\d{2} ?\d{2} ?$',
         widget=forms.TextInput(attrs={'placeholder': '+33612345678'})
     )
     procurantdob = forms.DateField(label="Date de naissance", widget=forms.SelectDateWidget(years=range(1900, 3000), attrs={'class': 'date-widget form-control'}))
@@ -231,7 +231,7 @@ class ProcurationForm(FieldsetForm):
     personpob = CharFieldTex(label="Lieu et département de naissance", widget=forms.TextInput(attrs={'placeholder': 'Nantes (Loire-Atlantique)'}))
     persontelephone = forms.RegexField(
         label="Numéro de téléphone",
-        regex=r'^\+33\d{9}$',
+        regex=r'^(\+33|0) ?\d{1} ?\d{2} ?\d{2} ?\d{2} ?\d{2} ?$',
         widget=forms.TextInput(attrs={'placeholder': '+33612345678'})
     )
     personlocation = CharFieldTex(label="Lieu où est faite la lettre")
@@ -359,7 +359,7 @@ class StandaloneForm(FieldsetForm):
     listofname = CharFieldTex(label="Liste des prénoms")
     telephone = forms.RegexField(
         label="Numéro de téléphone",
-        regex=r'^\+33\d{9}$',
+        regex=r'^(\+33|0) ?\d{1} ?\d{2} ?\d{2} ?\d{2} ?\d{2} ?$',
         widget=forms.TextInput(attrs={'placeholder': '+33612345678'})
     )
     dob = forms.DateField(label="Date de naissance ", widget=forms.SelectDateWidget(years=range(1900, 3000), attrs={'class': 'date-widget form-control'}))
