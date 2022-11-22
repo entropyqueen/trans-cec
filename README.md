@@ -7,9 +7,9 @@ Il s'agit d'un fork du project de Maria Climent-Pommeret
 | Maria Climent-Pommeret | Licence MIT |
 
 
-| Mainteneur.euse(s)     | Tâche(s)   | Contact               |
-|------------------------|------------|-----------------------|
-| Chelsea Murgia         | all        | mail@chelsea486mhz.fr |
+| Mainteneur.euse(s) | Tâche(s)   | Contact |
+|--------------------|------------|---------|
+| Emy Canton         | all        |         |
 
 Comment cela fonctionne
 -----------------------
@@ -28,28 +28,28 @@ Checklist des papiers à changer
 -------------------------------
 
 Si changement de prénom à l'EC
-- carte de transport
-- CNI/passeport
-- permis de conduire
-- impôts
-- médecins
-- mutuelle
-- carte de groupe sanguin/donneur.se d'organes
-- MDPH
-- électricité/gaz/eau
-- opérateur téléphonique/Internet
-- carte d'électeur.rice
+- [ ] carte de transport
+- [ ] CNI/passeport
+- [ ] permis de conduire
+- [ ] impôts
+- [ ] médecins
+- [ ] mutuelle
+- [ ] carte de groupe sanguin/donneur.se d'organes
+- [ ] MDPH
+- [ ] électricité/gaz/eau
+- [ ] opérateur téléphonique/Internet
+- [ ] carte d'électeur.rice
 
 Si changement de mention de sexe à l'État-Civil (pas encore pris en charge) :
-- CNI/passeport
-- permis de conduire
-- numéro INSEE
-- numéro de sécurité sociale
+- [ ] CNI/passeport
+- [ ] permis de conduire
+- [ ] numéro INSEE
+- [ ] numéro de sécurité sociale
 
 Requirements
 ------------
 
-- Python>=3.6 (Latest tested with)
+- Python>=3.9 (Latest tested with)
 - django-tex
 - jinja2-django-tags
 - texlive-full (pour la génération du PDF à partir de .tex)
@@ -62,7 +62,7 @@ TODO
 Contribuer ?
 ------------
 
-OUI SVP ! Comme je peux pas ouvrir à tout va le gitlab, envoyez-moi un mail (avec un sujet explicite), je vous créerais un compte !
+OUI SVP ! Pour cela, hésitez pas à faire des issues github ou bien ouvrir directement des PR sur github 
 
 Pour cela les dépendances système requises sont:
 
@@ -112,6 +112,7 @@ Ont contribué
 Un grand merci à toutes ces personnes qui ont fait des tests, bugs reports, merge requests, corrections orthographiques
 et montré du soutien \o/ :
 
+- [Emy Canton](https://entropyqueen.github.io/)
 - [Alice Climent-Pommeret](https://alice.climent-pommeret.red/fr)
 - [Sasha Emily Chelsea Murgia](https://www.chelsea486mhz.fr)
 - Aurore Moisy-Mabille
