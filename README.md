@@ -9,7 +9,7 @@ Il s'agit d'un fork du project de Maria Climent-Pommeret
 
 | Mainteneur.euse(s) | Tâche(s)   | Contact |
 |--------------------|------------|---------|
-| Emy Canton         | all        |         |
+| Emy Canton         | all        |     [github](https://github.com/entropyqueen/trans-cec/issues)    |
 
 Comment cela fonctionne
 -----------------------
@@ -28,23 +28,23 @@ Checklist des papiers à changer
 -------------------------------
 
 Si changement de prénom à l'EC
-- [ ] carte de transport
-- [ ] CNI/passeport
-- [ ] permis de conduire
-- [ ] impôts
-- [ ] médecins
-- [ ] mutuelle
-- [ ] carte de groupe sanguin/donneur.se d'organes
-- [ ] MDPH
-- [ ] électricité/gaz/eau
-- [ ] opérateur téléphonique/Internet
-- [ ] carte d'électeur.rice
+- carte de transport
+- CNI/passeport
+- permis de conduire
+- impôts
+- médecins
+- mutuelle
+- carte de groupe sanguin/donneur.se d'organes
+- MDPH
+- électricité/gaz/eau
+- opérateur téléphonique/Internet
+- carte d'électeur.rice
 
 Si changement de mention de sexe à l'État-Civil (pas encore pris en charge) :
-- [ ] CNI/passeport
-- [ ] permis de conduire
-- [ ] numéro INSEE
-- [ ] numéro de sécurité sociale
+- CNI/passeport
+- permis de conduire
+- numéro INSEE
+- numéro de sécurité sociale
 
 Requirements
 ------------
