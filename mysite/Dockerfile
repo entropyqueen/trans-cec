@@ -26,3 +26,5 @@ COPY . $APP_HOME
 # Setup owner and groups
 RUN chown -R app:app $APP_HOME
 USER app
+
+RUN python manage.py collectstatic --no-input --clear

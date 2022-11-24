@@ -76,6 +76,7 @@ Commencer par créer le fichier d'environnement de Prod `.env.prod`:
 DEBUG=0
 SECRET_KEY=CHANGE_ME
 DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+CSRF_TRUSTED_ORIGINS=https://your-domain.com
 ```
 ⚠️ Changer la SECRET_KEY par une valeur aléatoire d'au moins 50 caractères.
 
@@ -85,12 +86,6 @@ $ docker-compose -f docker-compose.prod.yml up -d --build
 L'option `--build` permet de re-build l'image pour qu'elle soit à jour
 
 L'option `-d` permet de passer en mode daemon.
-
-```shell
-$ docker-compose -f docker-compose.prod.yml exec web python manage.py migrate --noin
-$ docker-compose -f docker-compose.prod.yml exec web python manage.py collectstatic --no-input --clear
-```
-
 
 Contribuer ?
 ------------
