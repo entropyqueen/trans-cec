@@ -141,4 +141,4 @@ PROJECT_APP = os.path.basename(PROJECT_APP_PATH)
 PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/srv/trans-cec/static'
+STATIC_ROOT = '/home/app/web/static'
