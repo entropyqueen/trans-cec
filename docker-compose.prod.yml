@@ -11,18 +11,5 @@ services:
     env_file:
       - ./.env.prod
 
-  nginx:
-    build: ./nginx
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - static_volume:/home/app/web/static
-    env_file:
-      ./.env.prod
-    command: /prepare_nginx_conf.sh
-    depends_on:
-      - web
-
 volumes:
   static_volume:

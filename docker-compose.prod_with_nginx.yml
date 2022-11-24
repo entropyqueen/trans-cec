@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./mysite
+    command: gunicorn mysite.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app/web/static
+    expose:
+      - 8000
+    env_file:
+      - ./.env.prod
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - static_volume:/home/app/web/static
+      - certbot:/etc/letsencrypt
+      - certbot:/var/www/certbot
+    env_file:
+      ./.env.prod
+    command:
+      - /prepare_nginx_conf.sh
+      - "/bin/sh -c 'while :; do sleep 11h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    depends_on:
+      - web
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./nginx/data/certbot/conf:/etc/letsencrypt
+      - certbot:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+volumes:
+  static_volume:
+  certbot:
