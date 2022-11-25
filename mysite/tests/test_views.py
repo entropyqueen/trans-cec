@@ -22,9 +22,9 @@ def test_list_view(rf):
         assert '<p>{}</p>'.format(html.escape(form['description'])) in content
 
 
-def test_list_view_unkwnown(rf):
+def test_list_view_unknown(rf):
     with pytest.raises(http.Http404):
-        views.list(rf.get('/'), 'unkwown')
+        views.list(rf.get('/'), 'unknown')
 
 
 def test_form_view_get(rf):
