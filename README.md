@@ -9,7 +9,7 @@ Il s'agit d'un fork du project de Maria Climent-Pommeret
 
 | Mainteneur.euse(s) | Tâche(s)   | Contact |
 |--------------------|------------|---------|
-| Emy Canton         | all        |         |
+| Emy Canton         | all        |     [github](https://github.com/entropyqueen/trans-cec/issues)    |
 
 Comment cela fonctionne
 -----------------------
@@ -28,23 +28,23 @@ Checklist des papiers à changer
 -------------------------------
 
 Si changement de prénom à l'EC
-- [ ] carte de transport
-- [ ] CNI/passeport
-- [ ] permis de conduire
-- [ ] impôts
-- [ ] médecins
-- [ ] mutuelle
-- [ ] carte de groupe sanguin/donneur.se d'organes
-- [ ] MDPH
-- [ ] électricité/gaz/eau
-- [ ] opérateur téléphonique/Internet
-- [ ] carte d'électeur.rice
+- carte de transport
+- CNI/passeport
+- permis de conduire
+- impôts
+- médecins
+- mutuelle
+- carte de groupe sanguin/donneur.se d'organes
+- MDPH
+- électricité/gaz/eau
+- opérateur téléphonique/Internet
+- carte d'électeur.rice
 
 Si changement de mention de sexe à l'État-Civil (pas encore pris en charge) :
-- [ ] CNI/passeport
-- [ ] permis de conduire
-- [ ] numéro INSEE
-- [ ] numéro de sécurité sociale
+- CNI/passeport
+- permis de conduire
+- numéro INSEE
+- numéro de sécurité sociale
 
 Requirements
 ------------
@@ -54,10 +54,50 @@ Requirements
 - jinja2-django-tags
 - texlive-full (pour la génération du PDF à partir de .tex)
 
-Déploiment
+Déploiement
 ----------
 
-TODO
+Installer docker et docker-compose
+
+```shell
+$ sudo apt install docker docker-compose
+```
+
+#### Environnement de dev
+
+```shell
+$ docker-compose up
+```
+
+#### Environnement de prod avec NGINX Intégré
+
+Cette solution est la plus facile a utiliser si vous n'avez pas d'autre services sur la machine.
+Elle permet de lancer trans-cec avec gunicorn et nginx en reverse proxy. Le tout avec certbot pour gérer 
+automatiquement le HTTPS.
+
+Commencer par créer le fichier d'environnement de Prod `.env.prod`:
+```shell
+DEBUG=0
+SECRET_KEY=CHANGE_ME
+DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+CSRF_TRUSTED_ORIGINS=https://your-domain.com
+NGINX_HOST=your-domain.com
+CERTIF_EMAIL=email@example.org
+```
+⚠️ Changer la SECRET_KEY par une valeur aléatoire d'au moins 50 caractères.
+
+```shell
+$ docker-compose -f docker-compose.prod_with_nginx.yml up -d --build
+```
+L'option `--build` permet de re-build l'image pour qu'elle soit à jour
+
+L'option `-d` permet de passer en mode daemon.
+
+Pour permettre à TLS de fonctionner correctement, il faudra lancer le script d'init:
+```shell
+$ sudo bash ./init-letsencrypt.sh
+```
+
 
 Contribuer ?
 ------------
@@ -67,7 +107,7 @@ OUI SVP ! Pour cela, n'hésitez pas à faire des issues github ou bien ouvrir d
 Pour cela les dépendances système requises sont :
 
 - git
-- python3.7
+- python3.10
 - python3-venv
 - texlive-full
 
