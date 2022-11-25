@@ -1,6 +1,14 @@
-*trans-cec* permet de générer des fichiers PDF à partir d'un formulaire Django en utilisant [django-tex](https://pypi.org/project/django-tex/).
+Administrans
+===
+
+https://administrans.fr/
+
+Administrans est un outil en ligne permettant de générer des fichier pdf pour faire des attestations pour les changements de prénoms ainsi que des lettres pour demdander les changements suite a un changement de prénom/mention genre.
+Il a pour but de faciliter les démarches administrative des personnes transgenre en France.
+
+
+Administrans, anciennement *trans-cec* permet de générer des fichiers PDF à partir d'un formulaire Django en utilisant [django-tex](https://pypi.org/project/django-tex/).
 Il s'agit d'un fork du project de Maria Climent-Pommeret
-[site-transadministratif](https://gitlab.chelsea486mhz.fr/Chelsea486MHz/trans-cec).
 
 | Auteur.ice             | Licence     |
 |------------------------|-------------|
