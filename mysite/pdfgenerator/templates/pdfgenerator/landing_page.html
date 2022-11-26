@@ -2,16 +2,26 @@
 {% block content %}
 <h1>Mais qu'est ce donc ?</h1>
 <p>
-    Ce site permet de générer des fichiers PDF du dépôt git 
-    <a href="https://gitlab.s1.0x39b.fr/freyja/trans-cec/tree/main/mysite/pdfgenerator/templates/pdfgenerator/latex">localisé ici</a>
+    Administrans est un outil en ligne permettant de générer des fichiers pdf pour faire des attestations pour les changements de prénoms
+    ainsi que des lettres pour demander les changements suite à un changement de prénom/mention genre.<br>
+    Il a pour but de faciliter les démarches administratives des personnes transgenre en France.
 </p>
-<p>Des exemples de fichiers générés sont disponibles <a href="https://gitlab.climent-pommeret.red/Chopopope/site-transadministratif/wikis/Exemple-de-fichiers-g%C3%A9n%C3%A9r%C3%A9s">ici</a>.</p>
+<p>
+    Ce site permet de générer des fichiers PDF à partir des modèles LaTeX du dépôt git
+    <a href="https://github.com/entropyqueen/trans-cec/tree/main/mysite/pdfgenerator/templates/pdfgenerator/latex">localisés ici</a>
+</p>
+<p>
+    <strike>
+        Des exemples de fichiers générés sont disponibles
+        <a href="https://gitlab.climent-pommeret.red/Chopopope/site-transadministratif/wikis/Exemple-de-fichiers-g%C3%A9n%C3%A9r%C3%A9s">ici</a>.
+    </strike>
+</p>
 
 <h1>Que fait-on de vos données ?</h1>
-<p>Vos données ne sont pas stockées sur le serveur. Elles ne servent qu'à remplir les patrons de lettre.</p>
+<p>Vos données ne sont pas stockées sur le serveur. Elles ne servent qu'à remplir les modèles de lettre.</p>
 <p>
-    Le stockage des données en local ne concerne que votre navigateur, et les données ne font l'objet
-    d'aucun traitement supplémentaire.
+    L'option d'enregistrement des données ne stock vos données que localement dans votre navigateur et sert uniquement
+    à faciliter le remplissage des différents formulaires. Ces données ne font l'objet d'aucun traitement supplémentaire.
 </p>
 
 <h1>Les erreurs</h1>
@@ -21,23 +31,25 @@
 <h1>Une check list ? </h1>
 Si changement de prénom à l'État-Civil :
 <ul>
-    <li> carte de transport </li>
+    <li> Carte de transport </li>
     <li> CNI/passeport </li>
-    <li> permis de conduire </li>
-    <li> impôts </li>
-    <li> médecins </li>
-    <li> mutuelle </li>
-    <li> carte de groupe sanguin/donneur.se d'organes </li>
+    <li> Permis de conduire </li>
+    <li> Impôts </li>
+    <li> Médecins </li>
+    <li> Mutuelle </li>
+    <li> Carte de groupe sanguin/donneur.se d'organes </li>
     <li> MDPH </li>
-    <li> électricité/gaz/eau </li>
-    <li> opérateur téléphonique/Internet </li>
-    <li> carte d'électeur.rice </li>
+    <li> Électricité/gaz/eau </li>
+    <li> Opérateur téléphonique/Internet </li>
+    <li> Carte d'électeur.rice </li>
+    <li> Livret de famille</li>
 </ul>
 Si changement de mention de sexe à l'État-Civil :
 <ul>
     <li> CNI/passeport </li>
-    <li> permis de conduire </li>
-    <li> numéro INSEE </li>
-    <li> numéro de sécurité sociale </li>
+    <li> Permis de conduire </li>
+    <li> Numéro INSEE </li>
+    <li> Numéro de sécurité sociale </li>
+    <li> Livret de famille</li>
 </ul>
 {% endblock %}

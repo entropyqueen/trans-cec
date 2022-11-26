@@ -3,8 +3,8 @@ Administrans
 
 https://administrans.fr/
 
-Administrans est un outil en ligne permettant de générer des fichier pdf pour faire des attestations pour les changements de prénoms ainsi que des lettres pour demdander les changements suite a un changement de prénom/mention genre.
-Il a pour but de faciliter les démarches administrative des personnes transgenre en France.
+Administrans est un outil en ligne permettant de générer des fichiers pdf pour faire des attestations pour les changements de prénoms ainsi que des lettres pour demander les changements suite à un changement de prénom/mention genre.
+Il a pour but de faciliter les démarches administratives des personnes transgenre en France.
 
 
 Administrans, anciennement *trans-cec* permet de générer des fichiers PDF à partir d'un formulaire Django en utilisant [django-tex](https://pypi.org/project/django-tex/).
@@ -36,23 +36,25 @@ Checklist des papiers à changer
 -------------------------------
 
 Si changement de prénom à l'EC
-- carte de transport
+- Carte de transport
 - CNI/passeport
-- permis de conduire
-- impôts
-- médecins
-- mutuelle
-- carte de groupe sanguin/donneur.se d'organes
+- Permis de conduire
+- Impôts
+- Médecins
+- Mutuelle
+- Carte de groupe sanguin/donneur.se d'organes
 - MDPH
-- électricité/gaz/eau
-- opérateur téléphonique/Internet
-- carte d'électeur.rice
+- Électricité/gaz/eau
+- Opérateur téléphonique/Internet
+- Carte d'électeur.rice
+- Livret de famille
 
 Si changement de mention de sexe à l'État-Civil (pas encore pris en charge) :
 - CNI/passeport
-- permis de conduire
-- numéro INSEE
-- numéro de sécurité sociale
+- Permis de conduire
+- Numéro INSEE
+- Numéro de sécurité sociale
+- Livret de famille
 
 Requirements
 ------------
@@ -71,17 +73,29 @@ Installer docker et docker-compose
 $ sudo apt install docker docker-compose
 ```
 
-#### Environnement de dev
+### Environnement de dev
+
+L'environnement de dev se base sur les valeurs présentes dans le fichier `.env.dev`
+
+Pour lancer l'environnement avec docker-compose:
 
 ```shell
-$ docker-compose up
+$ docker-compose up -d --build
+```
+L'option `--build` permet de re-build l'image pour qu'elle soit à jour.
+L'option `-d` permet de passer en mode daemon.
+
+Afficher les logs:
+```shell
+$ docker-compose logs
 ```
 
-#### Environnement de prod avec NGINX Intégré
+Arrêter l'environnement:
+```shell
+$ docker-compose down -v
+```
 
-Cette solution est la plus facile a utiliser si vous n'avez pas d'autre services sur la machine.
-Elle permet de lancer trans-cec avec gunicorn et nginx en reverse proxy. Le tout avec certbot pour gérer 
-automatiquement le HTTPS.
+### Environnement de PROD
 
 Commencer par créer le fichier d'environnement de Prod `.env.prod`:
 ```shell
@@ -93,19 +107,43 @@ NGINX_HOST=your-domain.com
 CERTIF_EMAIL=email@example.org
 ```
 ⚠️ Changer la SECRET_KEY par une valeur aléatoire d'au moins 50 caractères.
+ 
+#### Environnement de prod avec NGINX Intégré
 
-```shell
-$ docker-compose -f docker-compose.prod_with_nginx.yml up -d --build
-```
-L'option `--build` permet de re-build l'image pour qu'elle soit à jour
-
-L'option `-d` permet de passer en mode daemon.
+Cette solution est la plus facile à utiliser si vous n'avez pas d'autres services sur la machine.
+Elle permet de lancer trans-cec avec gunicorn et nginx en reverse proxy. Le tout avec certbot pour gérer 
+automatiquement le HTTPS.
 
 Pour permettre à TLS de fonctionner correctement, il faudra lancer le script d'init:
 ```shell
 $ sudo bash ./init-letsencrypt.sh
 ```
 
+Puis changer l'owner des fichiers dans `./nginx/data/`
+```shell
+$ chown $USER:$USER -R ./nginx/data
+```
+
+On peut enfin lancer la prod :
+```shell
+$ docker-compose -f docker-compose.prod_with_nginx.yml up -d --build
+```
+
+
+#### Environnement de prod *sans* NGINX Intégré
+
+Si vous avez déjà votre propre reverse proxy, l'env de prod peut être lancé à l'aide de la commande:
+
+```shell
+$ docker-compose -f docker-compose.prod.yml up -d --build
+```
+
+Il vous faudra servir les static files par le reverse proxy, par exemple dans NGINX:
+```
+location /static/ {
+        alias /home/app/web/static/;
+    }
+```
 
 Contribuer ?
 ------------
