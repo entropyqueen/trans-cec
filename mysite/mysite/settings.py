@@ -41,7 +41,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'mysite.urls'
 
 ## Configure whitenoise to use forever cacheable static file and compression
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 TEMPLATES = [
     {
