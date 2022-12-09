@@ -317,6 +317,7 @@ class ImpotsRelanceProcuration(RelanceProcurationForm, ImpotsProcuration):
     pass
 
 
+
 IDENTITY_FIELDSETS = Fieldset(
     'person_id',
     legend='Identité',
