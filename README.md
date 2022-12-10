@@ -133,17 +133,12 @@ $ docker-compose -f docker-compose.prod_with_nginx.yml up -d --build
 #### Environnement de prod *sans* NGINX Intégré
 
 Si vous avez déjà votre propre reverse proxy, l'env de prod peut être lancé à l'aide de la commande:
-
 ```shell
 $ docker-compose -f docker-compose.prod.yml up -d --build
 ```
 
-Il vous faudra servir les static files par le reverse proxy, par exemple dans NGINX:
-```
-location /static/ {
-        alias /home/app/web/static/;
-    }
-```
+Le service tourne sur le port 8000 par défaut.  
+⚠️ Il est important de fournir un reverse proxy pour gérer une connexion sécurisée TLS afin de garder les données des utilisateurices bien chiffrées entre les transactions.
 
 Contribuer ?
 ------------
