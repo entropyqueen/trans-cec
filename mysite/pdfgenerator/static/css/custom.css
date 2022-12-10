@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 main {
@@ -21,6 +22,18 @@ main {
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
+}
+
+.nav > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    color: #cecece;
+    text-decoration: none;
+}
+
+.nav > li >  a:hover {
+    color: #ffffff;
 }
 
 .navbar-nav > li > span.icon {
