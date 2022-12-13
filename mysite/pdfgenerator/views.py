@@ -37,29 +37,32 @@ def list(request, category):
 
 def form(request, category, id):
     form_id = '{}_{}'.format(category, id)
-    form_config = forms.REGISTERED_FORMS[form_id]
-    form_class = form_config['form_class']
-    latex_name = form_config.get('latex_name', 'pdfgenerator/latex/{}.tex'.format(form_id))
-    form_context = form_config.copy()
-    if request.method == "POST":
-        form = form_class(request.POST)
-        form_context['form'] = form
-        if form.is_valid():
-            try:
-                return render_to_pdf(
-                    request,
-                    latex_name,
-                    {'cleaned_data': form.cleaned_data},
-                    filename="{}.pdf".format(form_id)
-                )
-            except TexError:
-                print(traceback.format_exc())
-                form.add_error(None, "Une erreur s'est produite lors de la génération du PDF")
-            except:
-                print(traceback.format_exc())
-                form.add_error(None, "Une erreur inconnue s'est produite, merci de contacter les"
-                        + " administrateur.rice.s")
-    else:
-        form = form_class()
-        form_context['form'] = form
+    try:
+        form_config = forms.REGISTERED_FORMS[form_id]
+        form_class = form_config['form_class']
+        latex_name = form_config.get('latex_name', 'pdfgenerator/latex/{}.tex'.format(form_id))
+        form_context = form_config.copy()
+        if request.method == "POST":
+            form = form_class(request.POST)
+            form_context['form'] = form
+            if form.is_valid():
+                try:
+                    return render_to_pdf(
+                        request,
+                        latex_name,
+                        {'cleaned_data': form.cleaned_data},
+                        filename="{}.pdf".format(form_id)
+                    )
+                except TexError:
+                    print(traceback.format_exc())
+                    form.add_error(None, "Une erreur s'est produite lors de la génération du PDF")
+                except:
+                    print(traceback.format_exc())
+                    form.add_error(None, "Une erreur inconnue s'est produite, merci de contacter les"
+                            + " administrateur.rice.s")
+        else:
+            form = form_class()
+            form_context['form'] = form
+    except KeyError:
+        raise http.Http404
     return render(request, "pdfgenerator/form.html", context(form_context), using='jinja2')
