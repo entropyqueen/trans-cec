@@ -22,3 +22,5 @@ urlpatterns = [
     path(r'', include('pdfgenerator.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+handler404 = 'pdfgenerator.views.error_404'
+handler500 = 'pdfgenerator.views.error_500'

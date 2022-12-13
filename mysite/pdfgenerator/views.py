@@ -21,6 +21,12 @@ def context(obj):
 def landing_page(request):
     return render(request, "pdfgenerator/landing_page.html", context({}), using='jinja2')
 
+def error_404(request, exception=None):
+    return render(request, 'pdfgenerator/404.html', context({}), using='jinja2', status=404)
+
+def error_500(request, exception=None):
+    return render(request, 'pdfgenerator/500.html', context({}), using='jinja2', status=500)
+
 def list(request, category):
     try:
         list = lists.LISTS[category]
